@@ -1,0 +1,9 @@
+.search-area {
+  display: flex;
+  gap: 1em;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
