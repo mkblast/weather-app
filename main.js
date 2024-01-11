@@ -1,3 +1,5 @@
+window.onload = startApp();
+
 async function fetchWeather(location) {
   const request = new Request(
     `http://api.weatherapi.com/v1/forecast.json?key=0156e23da18f4b8d8ac205307240901&q=${location}&days=3`,
@@ -36,12 +38,14 @@ function day(forecast) {
   }
 }
 
-function currentDay(current) {
+function currentDay(current, locationName) {
+  const location = document.querySelector(".location");
   const timeAndDate = document.querySelector(".time-date");
   const currentCondition = document.querySelector(".current-condition");
   const temp = document.querySelector(".temp");
   const wind = document.querySelector(".wind");
 
+  location.textContent = `Location: ${locationName["name"]}`;
   timeAndDate.textContent = `Today: ${current["last_updated"]}`;
   currentCondition.textContent = `Condition: ${current["condition"]["text"]}`
   temp.textContent = `Tempreture: ${current["temp_c"]}`;
@@ -65,10 +69,11 @@ async function startApp() {
 
     const forecast = data["forecast"]["forecastday"];
     const current = data["current"];
+    const locationName = data["location"];
 
     console.log(forecast)
 
-    currentDay(current);
+    currentDay(current, locationName);
     day(forecast);
     astro(forecast);
   } catch(err) {
