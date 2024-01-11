@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mkblast/weather-app/issues"
   },
-  "homepage": "https://github.com/mkblast/weather-app#readme"
+  "homepage": "https://github.com/mkblast/weather-app#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
 }

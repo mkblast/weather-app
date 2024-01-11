@@ -36,6 +36,18 @@ function day(forecast) {
   }
 }
 
+function currentDay(current) {
+  const timeAndDate = document.querySelector(".time-date");
+  const currentCondition = document.querySelector(".current-condition");
+  const temp = document.querySelector(".temp");
+  const wind = document.querySelector(".wind");
+
+  timeAndDate.textContent = `Today: ${current["last_updated"]}`;
+  currentCondition.textContent = `Condition: ${current["condition"]["text"]}`
+  temp.textContent = `Tempreture: ${current["temp_c"]}`;
+  wind.textContent = `Wind: ${current["wind_kph"]}kph`
+}
+
 const btn = document.querySelector(".search-btn");
 btn.addEventListener("click", startApp);
 
@@ -52,12 +64,15 @@ async function startApp() {
     console.log(something)
 
     const forecast = data["forecast"]["forecastday"];
+    const current = data["current"];
 
     console.log(forecast)
 
+    currentDay(current);
     day(forecast);
     astro(forecast);
   } catch(err) {
     alert(e)
   }
 }
+
