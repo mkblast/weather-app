@@ -34,7 +34,7 @@ async function renderApp(location) {
     day(forecast);
     astro(forecast);
   } catch (err) {
-    alert(e)
+    alert(err)
   }
 }
 
